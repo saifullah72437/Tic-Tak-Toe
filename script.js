@@ -1,4 +1,6 @@
 var x_turn  = true;
+var vectory = new Audio("audio/vectory.mp3");
+var moveAudio = new Audio("audio/move.mp3");
 var playerTurn = document.getElementById("playerTurn");
 playerTurn.textContent = "Player X Turn"
 
@@ -11,11 +13,16 @@ playerTurn.textContent = "Player X Turn"
     let btn6 = document.getElementById("btn6");
     let btn7 = document.getElementById("btn7");
     let btn8 = document.getElementById("btn8");
-   
+    let reset = document.getElementById("ResetBtn");
+
     function game(){
 
+        reset.addEventListener('click',()=>{
+            resetCode();
+        })
     
     btn0.addEventListener('click', ()=>{
+        btnClickAudio();
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
             btn0.innerHTML = "X";
@@ -30,6 +37,7 @@ playerTurn.textContent = "Player X Turn"
     });
     
     btn1.addEventListener('click', ()=>{
+        btnClickAudio();
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
             btn1.innerHTML = "X";
@@ -46,6 +54,7 @@ playerTurn.textContent = "Player X Turn"
     });
    
     btn2.addEventListener('click', ()=>{
+        btnClickAudio();
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
             btn2.innerHTML = "X";
@@ -62,6 +71,7 @@ playerTurn.textContent = "Player X Turn"
     });
    
     btn3.addEventListener('click', ()=>{
+        btnClickAudio();
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
             btn3.innerHTML = "X";
@@ -78,6 +88,7 @@ playerTurn.textContent = "Player X Turn"
     });
     
     btn4.addEventListener('click', ()=>{
+        btnClickAudio();
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
             btn4.innerHTML = "X";
@@ -94,6 +105,7 @@ playerTurn.textContent = "Player X Turn"
     });
     
     btn5.addEventListener('click', ()=>{
+        btnClickAudio();
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
             btn5.innerHTML = "X";
@@ -110,6 +122,7 @@ playerTurn.textContent = "Player X Turn"
     });
     
     btn6.addEventListener('click', ()=>{
+        btnClickAudio();
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
             btn6.innerHTML = "X";
@@ -125,6 +138,7 @@ playerTurn.textContent = "Player X Turn"
     });
     
     btn7.addEventListener('click', ()=>{
+        btnClickAudio();
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
             btn7.innerHTML = "X";
@@ -140,6 +154,7 @@ playerTurn.textContent = "Player X Turn"
     
    
     btn8.addEventListener('click', ()=>{
+        btnClickAudio();
         
         if(x_turn){
             playerTurn.textContent = "Player O Turn"
@@ -158,9 +173,9 @@ playerTurn.textContent = "Player X Turn"
 game();
 
 
-
     function winner() {
         if (
+            //row
             (btn0.innerHTML === btn1.innerHTML && btn0.innerHTML === btn2.innerHTML && btn0.innerHTML !== "") ||
             (btn3.innerHTML === btn4.innerHTML && btn3.innerHTML === btn5.innerHTML && btn3.innerHTML !== "") ||
             (btn6.innerHTML === btn7.innerHTML && btn6.innerHTML === btn8.innerHTML && btn6.innerHTML !== "") ||
@@ -172,6 +187,7 @@ game();
             (btn0.innerHTML === btn4.innerHTML && btn0.innerHTML === btn8.innerHTML && btn0.innerHTML !== "") ||
             (btn2.innerHTML === btn4.innerHTML && btn2.innerHTML === btn6.innerHTML && btn2.innerHTML !== "")
           ) {
+            vectory.play();
             if(playerTurn.textContent == "Player O Turn"){
                 alert("Player X Winner!");
             }
@@ -179,37 +195,50 @@ game();
                 alert("Player O Winner!");
             }
           
-          playerTurn.textContent = "Player O Turn"
-
-          btn0.innerHTML = "";
-          btn0.disabled = false;
-
-          btn1.innerHTML = "";
-          btn1.disabled = false;
-
-          btn2.innerHTML = "";
-          btn2.disabled = false;
-
-          btn3.innerHTML = "";
-          btn3.disabled = false;
-
-          btn4.innerHTML = "";
-          btn4.disabled = false;
-
-          btn5.innerHTML = "";
-          btn5.disabled = false;
-
-          btn6.innerHTML = "";
-          btn6.disabled = false;
-
-          btn7.innerHTML = "";
-          btn7.disabled = false;
-
-          btn8.innerHTML = "";
-          btn8.disabled = false;
-
+            resetCode();
 
         }
       }
       
 
+function resetCode(){
+    if(x_turn){
+        playerTurn.textContent = "Player X Turn"
+    }
+    else{
+        playerTurn.textContent = "Player O Turn"
+    }
+    
+
+    btn0.innerHTML = "";
+    btn0.disabled = false;
+
+    btn1.innerHTML = "";
+    btn1.disabled = false;
+
+    btn2.innerHTML = "";
+    btn2.disabled = false;
+
+    btn3.innerHTML = "";
+    btn3.disabled = false;
+
+    btn4.innerHTML = "";
+    btn4.disabled = false;
+
+    btn5.innerHTML = "";
+    btn5.disabled = false;
+
+    btn6.innerHTML = "";
+    btn6.disabled = false;
+
+    btn7.innerHTML = "";
+    btn7.disabled = false;
+
+    btn8.innerHTML = "";
+    btn8.disabled = false;
+
+}
+
+function btnClickAudio(){
+moveAudio.play();
+}
