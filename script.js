@@ -209,7 +209,7 @@ function resetCode(){
         playerTurn.textContent = "Player O Turn"
     }
     
-
+    vectory.play();
     btn0.innerHTML = "";
     btn0.disabled = false;
 
